@@ -181,7 +181,7 @@ class Ffmpeg extends Adapter
         }
 
         $cmd = self::getFfmpegCli() . ' -ss ' . $timeOffset . ' -i ' . escapeshellarg(realpath($this->file)) . ' -vcodec png -vframes 1 -vf scale=iw*sar:ih ' . escapeshellarg(str_replace('/', DIRECTORY_SEPARATOR, $file));
-        Console::exec($cmd, null, 60);
+        Console::exec($cmd, null, null);
 
         if ($realTargetPath) {
             File::rename($file, $realTargetPath);
@@ -198,7 +198,7 @@ class Ffmpeg extends Adapter
         $tmpFile = PIMCORE_SYSTEM_TEMP_DIRECTORY . '/video-info-' . uniqid() . '.out';
 
         $cmd = self::getFfmpegCli() . ' -i ' . escapeshellarg(realpath($this->file));
-        Console::exec($cmd, $tmpFile, 60);
+        Console::exec($cmd, $tmpFile, null);
 
         $contents = file_get_contents($tmpFile);
         unlink($tmpFile);
