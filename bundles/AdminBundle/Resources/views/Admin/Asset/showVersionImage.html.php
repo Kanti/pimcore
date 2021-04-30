@@ -102,7 +102,7 @@ use Pimcore\Model\Asset\MetaData\ClassDefinition\Data\Data; ?>
                                         ?>
                                         <tr>
                                             <td><?php echo $data['name']; ?>
-                                                (<?php echo $data['type']; ?>)
+                                                (<?php echo $data['type']; ?><?php if($data['language']) { echo ' ' . $data['language'];} ?>)
                                             </td>
                                             <td><?php echo $preview; ?>
                                             </td>
